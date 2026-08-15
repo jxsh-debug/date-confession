@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Question ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffeaf1;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            width: 90%;
+            max-width: 420px;
+            padding: 30px 22px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.15);
+        }
+
+        h1 {
+            color: #ff4f81;
+        }
+
+        p {
+            color: #555;
+            font-size: 17px;
+            line-height: 1.5;
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            padding: 13px 25px;
+            margin: 8px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #yes {
+            background: #ff4f81;
+            color: white;
+            transition: .3s;
+        }
+
+        #no {
+            background: #ddd;
+            color: #333;
+        }
+
+        input {
+            width: 90%;
+            padding: 14px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #submit {
+            background: #ff4f81;
+            color: white;
+            width: 90%;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+
+    <div id="question">
+
+        <h1>💌 Hey...</h1>
+
+        <p>
+            I don't know you that well yet,
+            but honestly, I'd really like to know you better.
+        </p>
+
+        <h2>Would you go on a date with me? 🥹</h2>
+
+        <button id="yes" onclick="yesClicked()">
+            YES ❤️
+        </button>
+
+        <button id="no" onclick="noClicked()">
+            NO 😭
+        </button>
+
+    </div>
+
+    <div id="datePage" class="hidden">
+
+        <h1>😭❤️ YAY!</h1>
+
+        <p>
+            Okay, now the important question...
+        </p>
+
+        <h2>When are you free? 📅</h2>
+
+        <form
+            action="https://formspree.io/f/mbgralya"
+            method="POST"
+        >
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Your name"
+                required
+            >
+
+            <br>
+
+            <input
+                type="date"
+                name="date"
+                required
+            >
+
+            <br>
+
+            <input
+                type="text"
+                name="message"
+                placeholder="Anything you want to say? (optional)"
+            >
+
+            <br>
+
+            <button id="submit" type="submit">
+                SEND ❤️
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+
+let yesSize = 18;
+
+function noClicked() {
+
+    yesSize += 8;
+
+    const yesButton = document.getElementById("yes");
+
+    yesButton.style.fontSize = yesSize + "px";
+
+    yesButton.style.padding =
+        (yesSize / 1.5) + "px " +
+        (yesSize * 1.5) + "px";
+}
+
+function yesClicked() {
+
+    document.getElementById("question")
+        .classList.add("hidden");
+
+    document.getElementById("datePage")
+        .classList.remove("hidden");
+}
+
+</script>
+
+</body>
+</html>
