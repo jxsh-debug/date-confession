@@ -2,7 +2,6 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>A Little Question ❤️</title>
 
     <style>
@@ -16,18 +15,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #ffeaf1;
+            background: linear-gradient(135deg, #ffeaf1, #fff5f8);
             font-family: Arial, sans-serif;
             text-align: center;
         }
 
         .card {
             background: white;
-            width: 90%;
-            max-width: 420px;
+            width: 92%;
+            max-width: 430px;
             padding: 30px 22px;
             border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,.15);
+            box-shadow: 0 10px 35px rgba(0,0,0,.15);
         }
 
         h1 {
@@ -44,8 +43,8 @@
             border: none;
             border-radius: 12px;
             padding: 13px 25px;
-            margin: 8px;
-            font-size: 18px;
+            margin: 7px;
+            font-size: 17px;
             cursor: pointer;
         }
 
@@ -60,30 +59,65 @@
             color: #333;
         }
 
-        input {
-            width: 90%;
-            padding: 14px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            font-size: 16px;
-        }
-
         .hidden {
             display: none;
+        }
+
+        input, select {
+            width: 92%;
+            padding: 14px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            background: white;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            width: 92%;
+            margin: 12px auto 3px;
+            font-weight: bold;
+            color: #555;
         }
 
         #submit {
             background: #ff4f81;
             color: white;
-            width: 90%;
+            width: 92%;
+            margin-top: 18px;
+        }
+
+        .choice {
+            text-align: left;
+            width: 92%;
+            margin: auto;
+        }
+
+        .choice label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .choice input {
+            width: auto;
+            margin: 0;
         }
     </style>
 </head>
 
 <body>
 
-<div class="card" id="card">
+<div class="card">
+
+    <!-- FIRST SCREEN -->
 
     <div id="question">
 
@@ -106,20 +140,25 @@
 
     </div>
 
+
+    <!-- DATE FORM -->
+
     <div id="datePage" class="hidden">
 
         <h1>😭❤️ YAY!</h1>
 
         <p>
-            Okay, now the important question...
+            Okay, let's plan it together.
+            <br>
+            You choose what sounds fun! 😊
         </p>
-
-        <h2>When are you free? 📅</h2>
 
         <form
             action="https://formspree.io/f/mbgralya"
             method="POST"
         >
+
+            <label>Your name</label>
 
             <input
                 type="text"
@@ -128,7 +167,8 @@
                 required
             >
 
-            <br>
+
+            <label>📅 What date are you free?</label>
 
             <input
                 type="date"
@@ -136,15 +176,86 @@
                 required
             >
 
-            <br>
+
+            <label>🕐 What time?</label>
+
+            <input
+                type="time"
+                name="time"
+                required
+            >
+
+
+            <label>❤️ What kind of date?</label>
+
+            <div class="choice">
+
+                <label>
+                    <input
+                        type="radio"
+                        name="date_type"
+                        value="Movie"
+                        required
+                    >
+                    🎬 Watch a movie
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="date_type"
+                        value="Eating together"
+                    >
+                    🍔 Eat together
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="date_type"
+                        value="Coffee / Cafe"
+                    >
+                    ☕ Coffee / Café
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="date_type"
+                        value="Walk / Hangout"
+                    >
+                    🚶 Walk / Hangout
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="date_type"
+                        value="Games"
+                    >
+                    🎮 Play games
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="date_type"
+                        value="Other"
+                    >
+                    ✨ Other
+                </label>
+
+            </div>
+
+
+            <label>💭 Anything else?</label>
 
             <input
                 type="text"
                 name="message"
-                placeholder="Anything you want to say? (optional)"
+                placeholder="Tell me what you're thinking..."
             >
 
-            <br>
 
             <button id="submit" type="submit">
                 SEND ❤️
@@ -156,6 +267,7 @@
 
 </div>
 
+
 <script>
 
 let yesSize = 18;
@@ -164,14 +276,17 @@ function noClicked() {
 
     yesSize += 8;
 
-    const yesButton = document.getElementById("yes");
+    const yesButton =
+        document.getElementById("yes");
 
-    yesButton.style.fontSize = yesSize + "px";
+    yesButton.style.fontSize =
+        yesSize + "px";
 
     yesButton.style.padding =
         (yesSize / 1.5) + "px " +
         (yesSize * 1.5) + "px";
 }
+
 
 function yesClicked() {
 
